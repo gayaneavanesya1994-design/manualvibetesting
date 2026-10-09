@@ -242,6 +242,27 @@ function renderCheckoutSummary() {
 }
 
 function buggyPlaceOrder() {
+  const fields = [
+    { id: 'co-firstname', name: 'First Name' },
+    { id: 'co-lastname', name: 'Last Name' },
+    { id: 'co-address', name: 'Address' },
+    { id: 'co-city', name: 'City' },
+    { id: 'co-zip', name: 'ZIP Code' },
+    { id: 'co-email', name: 'Email Address' },
+    { id: 'co-phone', name: 'Phone Number' },
+    { id: 'co-card', name: 'Card Number' },
+    { id: 'co-expiry', name: 'Expiry' },
+    { id: 'co-cvv', name: 'CVV' }
+  ];
+
+  for (const field of fields) {
+    const value = document.getElementById(field.id).value.trim();
+    if (!value) {
+      showToast(field.name + ' is required', 'error');
+      return;
+    }
+  }
+
   showPage('confirm');
 }
 
